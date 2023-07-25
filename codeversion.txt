@@ -1,0 +1,8 @@
+1 commit]
+installed djnago
+installed pillow
+creates a project directory store
+creates an app wholeshopview
+In settings.py file added templates, static, media roots n url and laso adds wholeshopview to the INSTALLED_APPS list.
+In store.urls.py sets the urlpatterns
+ceated urls.py in wholeshopview and map ito to wholeshopview.views.py and render the home page using home().
