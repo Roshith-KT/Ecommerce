@@ -1,0 +1,232 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap"
+      rel="stylesheet"
+    />
+
+
+    
+    <title>Hexashop Ecommerce HTML CSS Template</title>
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+
+
+    <!-- Additional CSS Files -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'css/bootstrap.min.css' %}"
+    />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'css/font-awesome.css' %}"
+    />
+
+    <link rel="stylesheet" href="{% static 'css/templatemo-hexashop.css' %}" />
+
+    <link rel="stylesheet" href="{% static 'css/owl-carousel.css' %}" />
+
+    <link rel="stylesheet" href="{% static 'css/lightbox.css' %}" />
+    <!--
+
+TemplateMo 571 Hexashop
+
+https://templatemo.com/tm-571-hexashop
+
+-->
+  </head>
+
+  <body>
+    <!-- ***** Preloader Start *****
+    <div id="preloader">
+        <div class="jumper">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>  
+    ***** Preloader End ***** -->
+
+    <!-- ***** Header Area Start ***** -->
+    <header class="header-area header-sticky">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <nav class="main-nav">
+              <!-- ***** Logo Start ***** -->
+              <a href="index.html" class="logo">
+                <img src="{% static 'images/familymart.png' %}" />
+              </a>
+              
+              <!-- ***** Logo End ***** -->
+              <!-- ***** Menu Start ***** -->
+              <ul class="nav">
+                <li class="scroll-to-section">
+                  <form class="form-inline">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search the products" aria-label="Search">
+                    <button class="btn btn-outline-text-dark my-2 my-sm-0" type="submit">
+                      <i class="fa fa-search fa-lg" aria-hidden="true"></i>
+                    </button>
+                  </form>
+                </li>
+                <li class="scroll-to-section">
+                  <a href="{% url 'wholeshopview:home' %}"
+                    ><i class="fa fa-home fa-1x" aria-hidden="true"></i>
+                  </a>
+                </li>
+                <li class="submenu">
+                  <a href="javascript:;">Categories</a>
+                  <ul>
+                    {% for i in category %}
+                    <li><a href="{% url 'wholeshopview:categoryProductView' i.slug%}">{{i.name}}</a></li>
+                    {% endfor %}
+                  </ul>
+                </li>
+                <li class="scroll-to-section">
+                  <a href="#explore"><i class="fa fa-user" aria-hidden="true"></i> Roshith</a>
+                </li>
+                <li class="scroll-to-section">
+                  <a href="#top"
+                    ><i class="fa fa-shopping-cart  fa-1x" aria-hidden="true"></i><sup><i class="fa fa-pie-chart" aria-hidden="true"></i></sup>
+                  </a>
+                </li>
+                <li class="scroll-to-section">
+                  <a href="#explore">Explore</a>
+                </li>
+              </ul>
+              <a class="menu-trigger">
+                <span>Menu</span>
+              </a>
+              <!-- ***** Menu End ***** -->
+            </nav>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- ***** Header Area End ***** -->
+    {% block start %} {% endblock %}
+
+    <!-- ***** Footer Start ***** -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3">
+            <div class="first-item">
+              <div class="logo">
+                <img
+                  src="{% static 'images/familymart3.png' %}"
+                  alt="hexashop ecommerce templatemo"
+                />
+              </div>
+              <ul>
+                <li><a href="#">Kannur, Kerala, India</a></li>
+                <li><a href="#">store@gmail.com</a></li>
+                <li><a href="#">+91-9874563210</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-3">
+            <h4>Shopping &amp; Categories</h4>
+            <ul>
+              <li><a href="#">Men’s Shopping</a></li>
+              <li><a href="#">Women’s Shopping</a></li>
+              <li><a href="#">Kid's Shopping</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-3">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><a href="#">Homepage</a></li>
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Help</a></li>
+              <li><a href="#">Contact Us</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-3">
+            <h4>Help &amp; Information</h4>
+            <ul>
+              <li><a href="#">Help</a></li>
+              <li><a href="#">FAQ's</a></li>
+              <li><a href="#">Shipping</a></li>
+              <li><a href="#">Tracking ID</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-12">
+            <div class="under-footer">
+              <p>
+                Copyright © 2023 Roshith.K.T, All Rights Reserved.
+
+                <br />Design:
+                <a href="#" target="_parent" title="#">Out Sourced</a>
+              </p>
+              <ul>
+                <li>
+                  <a href="#"><i class="fa fa-facebook"></i></a>
+                </li>
+                <li>
+                  <a href="#"><i class="fa fa-twitter"></i></a>
+                </li>
+                <li>
+                  <a href="#"><i class="fa fa-linkedin"></i></a>
+                </li>
+                <li>
+                  <a href="#"><i class="fa fa-behance"></i></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="{% static 'js/jquery-2.1.0.min.js' %}"></script>
+
+    <!-- Bootstrap -->
+    <script src="{% static 'js/popper.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+    <!-- Plugins -->
+    <script src="{% static 'js/owl-carousel.js' %}"></script>
+    <script src="{% static 'js/accordions.js' %}"></script>
+    <script src="{% static 'js/datepicker.js' %}"></script>
+    <script src="{% static 'js/scrollreveal.min.js' %}"></script>
+    <script src="{% static 'js/waypoints.min.js' %}"></script>
+    <script src="{% static 'js/jquery.counterup.min.js' %}"></script>
+    <script src="{% static 'js/imgfix.min.js' %}"></script>
+    <script src="{% static 'js/slick.js' %}"></script>
+    <script src="{% static 'js/lightbox.js' %}"></script>
+    <script src="{% static 'js/isotope.js' %}"></script>
+
+    <!-- Global Init -->
+    <script src="{% static 'js/custom.js' %}"></script>
+
+    <script>
+      $(function () {
+        var selectedClass = "";
+        $("p").click(function () {
+          selectedClass = $(this).attr("data-rel");
+          $("#portfolio").fadeTo(50, 0.1);
+          $("#portfolio div")
+            .not("." + selectedClass)
+            .fadeOut();
+          setTimeout(function () {
+            $("." + selectedClass).fadeIn();
+            $("#portfolio").fadeTo(50, 1);
+          }, 500);
+        });
+      });
+    </script>
+  </body>
+</html>

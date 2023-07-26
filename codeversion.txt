@@ -6,3 +6,12 @@ creates an app wholeshopview
 In settings.py file added templates, static, media roots n url and laso adds wholeshopview to the INSTALLED_APPS list.
 In store.urls.py sets the urlpatterns
 ceated urls.py in wholeshopview and map ito to wholeshopview.views.py and render the home page using home().
+
+
+2 Commit]
+added search bar and icon to the the templates
+created views for home page, products by type, products by category,single product, all products,mens latest products,womens latest products n latest updated products.
+Finaly render render the templates.
+
+icon source:font-awsome
+searchbar sorce:bootstrap
