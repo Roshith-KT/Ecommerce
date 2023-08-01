@@ -38,6 +38,8 @@
     <link rel="stylesheet" href="{% static 'css/owl-carousel.css' %}" />
 
     <link rel="stylesheet" href="{% static 'css/lightbox.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/credentials.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/cart.css' %}" />
     <!--
 
 TemplateMo 571 Hexashop
@@ -73,8 +75,9 @@ https://templatemo.com/tm-571-hexashop
               <!-- ***** Menu Start ***** -->
               <ul class="nav">
                 <li class="scroll-to-section">
-                  <form class="form-inline">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search the products" aria-label="Search">
+                  <form class="form-inline" method="post" action="{% url 'search:search_products' %}">
+                    {% csrf_token %}
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search the products" aria-label="Search" name="search">
                     <button class="btn btn-outline-text-dark my-2 my-sm-0" type="submit">
                       <i class="fa fa-search fa-lg" aria-hidden="true"></i>
                     </button>
@@ -97,13 +100,19 @@ https://templatemo.com/tm-571-hexashop
                   <a href="#explore"><i class="fa fa-user" aria-hidden="true"></i> Roshith</a>
                 </li>
                 <li class="scroll-to-section">
-                  <a href="#top"
+                  <a href="{% url 'cart:cart_view' %}"
                     ><i class="fa fa-shopping-cart  fa-1x" aria-hidden="true"></i><sup><i class="fa fa-pie-chart" aria-hidden="true"></i></sup>
                   </a>
                 </li>
                 <li class="scroll-to-section">
-                  <a href="#explore">Explore</a>
+                  <a href="{% url 'credentials:login' %}">Login</a>
                 </li>
+                <!--<li class="scroll-to-section">
+                  <a href="{% url 'credentials:register' %}">Register</a>
+                </li>
+                <li class="scroll-to-section">
+                  <a href="{% url 'credentials:logout' %}">Logout</a>
+                </li>-->
               </ul>
               <a class="menu-trigger">
                 <span>Menu</span>

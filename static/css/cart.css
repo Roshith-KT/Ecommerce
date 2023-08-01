@@ -1,0 +1,26 @@
+.cart{
+    margin:auto;
+    margin-top:200px;
+    max-height: auto;
+    max-width: auto;
+    background-color:#2a2a2a;
+    border-radius: 10px;
+
+}
+
+table{
+    border:1;
+    width:100%;
+    border-collapse: collapse;
+    color: azure;
+}
+
+th,td{
+    text-align: center;
+    padding: 50px;
+    
+}
+a:link{
+    text-decoration: none;
+
+}

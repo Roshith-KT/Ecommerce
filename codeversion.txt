@@ -15,3 +15,12 @@ Finaly render render the templates.
 
 icon source:font-awsome
 searchbar sorce:bootstrap
+
+3 commit]
+creates search app added search bar functionality
+added paninator functions in the wholeshopview app
+creates credentials app n creates & adds login and register HTML templates
+creates cart app n creates cart HTML templates.
+
+icon source for cart add, minus and trash from font awesome.
+

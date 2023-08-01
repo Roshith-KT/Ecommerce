@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.db.models import Q
 from . models import Type, Product, Category
+from django.core.paginator import Paginator
 
 # views
 
@@ -15,9 +16,9 @@ def home(request):
     type_men = Type.objects.get(name="Men")  # object for category men
     type_women = Type.objects.get(name="Women")  # object for category women
     products_men = Product.objects.all().filter(
-        type=type_men).order_by("-id")[:3]# query set for latest 3 men products
+        type=type_men).order_by("-id")[:3]  # query set for latest 3 men products
     products_women = Product.objects.all().filter(
-        type=type_women).order_by("-id")[:3]# query set for latest 3 women products
+        type=type_women).order_by("-id")[:3]  # query set for latest 3 women products
 
     context = {
         'type': type,
@@ -51,11 +52,23 @@ def singleProductView(request, slug):
 
 
 def allProductsView(request):
-    products = Product.objects.all()
+    products = Product.objects.all().order_by("id")
+    p = Paginator(products, 3)
+    page = request.GET.get('page')
+    products_p = p.get_page(page)
+    print(products_p)
+
     context = {
-        'products': products
+        'products': products,
+        'products_p': products_p
     }
     return render(request, 'wholeshopview/all_products_view.html', context)
+
+    # products = Product.objects.all()
+    # context = {
+    #    'products': products
+    # }
+    # return render(request, 'wholeshopview/all_products_view.html', context)
 
 
 def categoryProductView(request, slug):

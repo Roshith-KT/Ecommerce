@@ -41,6 +41,9 @@ INSTALLED_APPS = [
 
     #apps
     'wholeshopview',
+    'credentials',
+    'cart',
+    'search',
 ]
 
 MIDDLEWARE = [
