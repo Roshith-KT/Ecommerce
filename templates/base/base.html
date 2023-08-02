@@ -97,16 +97,25 @@ https://templatemo.com/tm-571-hexashop
                   </ul>
                 </li>
                 <li class="scroll-to-section">
-                  <a href="#explore"><i class="fa fa-user" aria-hidden="true"></i> Roshith</a>
-                </li>
-                <li class="scroll-to-section">
                   <a href="{% url 'cart:cart_view' %}"
                     ><i class="fa fa-shopping-cart  fa-1x" aria-hidden="true"></i><sup><i class="fa fa-pie-chart" aria-hidden="true"></i></sup>
                   </a>
                 </li>
+                {% if user.is_authenticated %}
+                <li class="scroll-to-section">
+                  <a href="#explore"><i class="fa fa-user" aria-hidden="true"></i>{{user.first_name}}</a>
+                </li>
+                <li class="scroll-to-section">
+                  <a href="{% url 'credentials:logout' %}">Logout</a>
+                </li>
+                {% else %}
                 <li class="scroll-to-section">
                   <a href="{% url 'credentials:login' %}">Login</a>
                 </li>
+                <li class="scroll-to-section">
+                  <a href="{% url 'credentials:register' %}">Register</a>
+                </li>
+                {% endif %}
                 <!--<li class="scroll-to-section">
                   <a href="{% url 'credentials:register' %}">Register</a>
                 </li>

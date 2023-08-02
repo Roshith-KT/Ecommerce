@@ -26,3 +26,6 @@ icon source for cart add, minus and trash from font awesome.
 
 4 commit]
 deleted the runserver app and all of its associated files which was accidently created.
+
+5 commit]
+creates customer login and register functionality with account activation using email verification.
