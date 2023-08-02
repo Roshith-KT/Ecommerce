@@ -24,3 +24,5 @@ creates cart app n creates cart HTML templates.
 
 icon source for cart add, minus and trash from font awesome.
 
+4 commit]
+deleted the runserver app and all of its associated files which was accidently created.
