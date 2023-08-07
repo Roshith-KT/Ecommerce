@@ -8,7 +8,6 @@ from django.core.exceptions import ObjectDoesNotExist
 # Create your views here.
 @login_required(login_url='credentials:login')
 def cart_view(request):
-    cart_items=CartItem.objects.all()
     try:
         cart=Cart.objects.get(cart_id=_cart_id(request))
     except Cart.DoesNotExist:
@@ -16,10 +15,12 @@ def cart_view(request):
             cart_id=_cart_id(request)
         )
         cart.save()
+    
+    cart_items=CartItem.objects.all().filter(cart=cart)
         
     for i in cart_items:
         cart.grand_total += i.total
-        cart.save()
+    
     
     return render(request,'cart/cart_view.html',{'cart_items':cart_items,'cart':cart})
 
