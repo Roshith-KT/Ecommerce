@@ -24,7 +24,9 @@
                 <td>
                     <a href="{% url 'cart:add_to_cart' i.product.id %}" style="color:beige; margin-right:10px;"><i class="fa fa-plus" aria-hidden="true"></i></a>
                     {{i.quantity}}
+                    {% if i.quantity > 1 %}
                     <a href="{% url 'cart:cartitem_remove' i.id %}" style="color:beige; margin-left:10px;"><i class="fa fa-minus" aria-hidden="true"></i></a>
+                    {% endif %}
                 </td>
                 <td>Rs.{{i.total}}</td>
                 <td>
