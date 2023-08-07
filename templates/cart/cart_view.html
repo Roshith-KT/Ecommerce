@@ -2,41 +2,50 @@
 
 {% block start %}
 
+
 <div class="container">
-    <div>
-        <h1>Your shopping cart</h1>
-    </div>
        
     <div class="cart">
         <table border="1">
-            
             <tr>
-                <th colspan="6">Your Items</th>
+                <th colspan="6" >Your Items</th>
             </tr>
-            {% for i in products %}
+            <tr style="background-color: beige; color:#2a2a2a;">
+                <th colspan="2">Product</th>
+                <th>Price/piece</th>
+                <th>Quantity</th>
+                <th colspan="2" style="text-align: left;">Total</th>
+            </tr>
+            {% for i in cart_items %}
             <tr>
-                <td><img src="{{i.image.url}}" height="100" width="70"></td>
-                <td>{{i.name}}</td>
-                <td>Rs. {{i.price}}</td>
+                <td><img src="{{i.product.image.url}}" height="100" width="70"></td>
+                <td>{{i.product.name}}</td>
+                <td>Rs. {{i.product.price}}</td>
                 <td>
-                    <a href=""><i class="fa fa-plus" aria-hidden="true"></i></a>
-                    3
-                    <a href=""><i class="fa fa-minus" aria-hidden="true"></i></a>
+                    <a href="{% url 'cart:add_to_cart' i.product.id %}" style="color:beige; margin-right:10px;"><i class="fa fa-plus" aria-hidden="true"></i></a>
+                    {{i.quantity}}
+                    <a href="{% url 'cart:cartitem_remove' i.id %}" style="color:beige; margin-left:10px;"><i class="fa fa-minus" aria-hidden="true"></i></a>
                 </td>
-                <td>Rs.{{i.price}}</td>
+                <td>Rs.{{i.total}}</td>
                 <td>
-                    <a href=""><i class="fa fa-trash" aria-hidden="true"></i></a>
+                    <a href="{% url 'cart:cartitem_delete' i.id %}" style="color:red;"><i class="fa fa-trash" aria-hidden="true"></i></a>
                 </td>
 
             </tr>
-            
             {% endfor %}
+            <tr style="background-color: beige; color:#2a2a2a;">
+                <th colspan="2">Grand Total</th>
+                <th colspan="2">Rs.{{cart.grand_total}}</th>
+                <th colspan="2"><a href="" class="btn btn-dark">Checkout</a></th>
+            </tr>
         </table>
+        <h1>Your Shopping Cart is Empty</h1>
+        
+
     </div>
 
-    <div class="cart">
-        <h1> Grand Total </h1>
-    </div>
+    
+
 </div>
 
 

@@ -2,7 +2,7 @@ from django.shortcuts import render
 from wholeshopview.models import Product
 
 def search_products(request):
-    context = {'searched_term': None, 'products': None, 'searched_word': None}  # Initialize the context dictionary
+    context = {'searched_term': "", 'products': "", 'searched_word': ""}  # Initialize the context dictionary
     if request.method == 'POST':
         searched_term = request.POST['search']
         searched_word = searched_term
