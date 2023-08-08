@@ -29,3 +29,19 @@ deleted the runserver app and all of its associated files which was accidently c
 
 5 commit]
 creates customer login and register functionality with account activation using email verification.
+
+6 commit]alters cart_template fully with updated css and add its some functionalities.
+
+7 commit]partial cart functionality added with grandtotal calculation error.
+
+8 commit]Fixed cart_view.html functionalities.
+
+9 commit]Required commit for database model modification.
+
+10 commit]Fixed cart functionality by fixing grand_total calculation error.
+
+11 commit] Conflict removed.
+
+12 commit]updated code version txt file
+
+13 commit] fixed bugs in admin panel
