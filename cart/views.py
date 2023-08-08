@@ -9,36 +9,39 @@ from django.core.exceptions import ObjectDoesNotExist
 @login_required(login_url='credentials:login')
 def cart_view(request):
     try:
-        cart=Cart.objects.get(cart_id=_cart_id(request))
+        cart=Cart.objects.get(user=request.user)
+        cart.grand_total=0
+        cart.save()
     except Cart.DoesNotExist:
         cart=Cart.objects.create(
-            cart_id=_cart_id(request)
+            user=request.user
         )
-        cart.save()
+        
     
     cart_items=CartItem.objects.all().filter(cart=cart)
         
     for i in cart_items:
         cart.grand_total += i.total
+    cart.save()
     
     
     return render(request,'cart/cart_view.html',{'cart_items':cart_items,'cart':cart})
 
 
-def _cart_id(request):
-    cart = request.session.session_key
-    if not cart:
-        cart = request.session.create()
-    return cart
+# def _cart_id(request):
+#     cart = request.session.session_key
+#     if not cart:
+#         cart = request.session.create()
+#     return cart
 
 def add_to_cart(request,id):
     product=Product.objects.get(id=id)
 
     try:
-        cart=Cart.objects.get(cart_id=_cart_id(request))
+        cart=Cart.objects.get(user=request.user)
     except Cart.DoesNotExist:
         cart=Cart.objects.create(
-            cart_id=_cart_id(request)
+            user=request.user
         )
         cart.save()
     
