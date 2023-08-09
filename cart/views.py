@@ -34,6 +34,7 @@ def cart_view(request):
 #         cart = request.session.create()
 #     return cart
 
+@login_required(login_url='credentials:login')
 def add_to_cart(request,id):
     product=Product.objects.get(id=id)
 
@@ -60,9 +61,10 @@ def add_to_cart(request,id):
             total=product.price
         )
         cart_item.save()
-    #return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
-    return redirect('cart:cart_view')
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+    #return redirect('cart:cart_view')
 
+@login_required(login_url='credentials:login')
 def cartitem_remove(request,id):
     cart_item=CartItem.objects.get(id=id)
     if cart_item.quantity==1:
@@ -74,8 +76,14 @@ def cartitem_remove(request,id):
     return redirect('cart:cart_view')
 
 
+@login_required(login_url='credentials:login')
 def cartitem_delete(request,id):
     cart_item=CartItem.objects.get(id=id)
     cart_item.delete()
     return redirect('cart:cart_view')
     
+
+
+#checkout section
+def checkout(request):
+    return render(request,'orders/checkout.html')

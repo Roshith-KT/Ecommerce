@@ -16,7 +16,7 @@
 
 
     
-    <title>Hexashop Ecommerce HTML CSS Template</title>
+    <title>Family Mart</title>
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 
 
@@ -40,6 +40,7 @@
     <link rel="stylesheet" href="{% static 'css/lightbox.css' %}" />
     <link rel="stylesheet" href="{% static 'css/credentials.css' %}" />
     <link rel="stylesheet" href="{% static 'css/cart.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/checkout.css' %}" />
     <!--
 
 TemplateMo 571 Hexashop
@@ -102,8 +103,13 @@ https://templatemo.com/tm-571-hexashop
                   </a>
                 </li>
                 {% if user.is_authenticated %}
-                <li class="scroll-to-section">
-                  <a href="#explore"><i class="fa fa-user" aria-hidden="true"></i>{{user.first_name}}</a>
+
+                <li class="submenu">
+                  <a href="javascript:;"><i class="fa fa-user" style="margin-right: 7px; color: darkslategray;" aria-hidden="true"></i>{{user.first_name}}</a>
+                  <ul>
+                    <li><a href="">Profile</a></li>
+                    <li><a href="{% url 'orders:orders_view' %}">Orders</a></li>
+                  </ul>
                 </li>
                 <li class="scroll-to-section">
                   <a href="{% url 'credentials:logout' %}">Logout</a>

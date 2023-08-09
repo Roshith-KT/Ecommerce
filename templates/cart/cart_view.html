@@ -6,7 +6,7 @@
 <div class="container">
        
     <div class="cart">
-        <table border="1">
+        <table>
             <tr>
                 <th colspan="6" >Your Items</th>
             </tr>
@@ -38,7 +38,7 @@
             <tr style="background-color: beige; color:#2a2a2a;">
                 <th colspan="2">Grand Total</th>
                 <th colspan="2">Rs.{{cart.grand_total}}</th>
-                <th colspan="2"><a href="" class="btn btn-dark">Checkout</a></th>
+                <th colspan="2"><a href="{% url 'orders:checkout' %}" class="btn btn-dark">Checkout</a></th>
             </tr>
         </table>
         <h1>Your Shopping Cart is Empty</h1>

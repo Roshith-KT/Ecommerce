@@ -1,0 +1,30 @@
+.checkout{
+    margin:auto;
+    margin-top:200px;
+    max-height: auto;
+    max-width: auto;
+    background-color:#2a2a2a;
+    color:beige;
+    text-align: center;
+}
+
+.trcheckout{
+    height: 100px;
+}
+
+.tdcheckout{
+    background-color: beige;
+    padding-top:0cm;
+    padding-bottom: 0cm;
+    color:#2a2a2a;
+}
+
+.tdinput{
+    width:10cm;
+    border-radius: 7px;
+}
+
+.space{
+    margin-left: 0px;
+}
+

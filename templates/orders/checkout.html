@@ -1,0 +1,56 @@
+{% extends 'base/base.html' %}
+
+{% block start %}
+
+
+<div class="container">
+       
+    <div class="checkout">
+        <h1>Please enter the details to checkout</h1>
+        <form method="post">
+            {% csrf_token %}
+            <table>
+                <tr class="trcheckout">
+                    <td class="tdcheckout">Name:</td>
+                    <td class="tdcheckout tdspace"><input class="tdinput" type="text" name="name" placeholder="Name:"></td>
+                </tr>
+                <tr class="trcheckout">
+                    <td class="tdcheckout">Address:</td>
+                    <td class="tdcheckout"><textarea class="tdinput" name="address" placeholder="address"></textarea></td>
+                    
+                </tr>
+                <tr class="trcheckout">
+                    <td class="tdcheckout">District:</td>
+                    <td class="tdcheckout"><input class="tdinput" type="text" name="district" placeholder="District"></td>
+                </tr>
+                <tr class="trcheckout">
+                    <td class="tdcheckout">State:</td>
+                    <td class="tdcheckout"><input class="tdinput" type="text" name="state" placeholder="State"></td>
+                </tr>
+                <tr class="trcheckout">
+                    <td class="tdcheckout">Country:</td>
+                    <td class="tdcheckout"><input class="tdinput" type="text" name="country" placeholder="Pin"></td>
+                </tr>
+                <tr class="trcheckout">
+                    <td class="tdcheckout">Mobile:</td>
+                    <td class="tdcheckout"><input class="tdinput" type="text" name="mobile" placeholder="Mobile"></td>
+                </tr>
+                <tr class="trcheckout">
+                    <td class="tdcheckout">Email:</td>
+                    <td class="tdcheckout"><input class="tdinput" type="email" name="email" placeholder="Email"></td>
+                </tr>
+                <tr class="trcheckout">
+                    <th colspan="2"><button type="submit" class="btn btn-light">Checkout<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-short" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"/>
+                      </svg></button></th>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+    
+
+</div>
+
+
+{% endblock %}

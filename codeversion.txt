@@ -1,5 +1,5 @@
 1 commit]
-installed djnago
+installed django
 installed pillow
 creates a project directory store
 creates an app wholeshopview
@@ -45,3 +45,10 @@ creates customer login and register functionality with account activation using 
 12 commit]updated code version txt file
 
 13 commit] fixed bugs in admin panel
+
+14 commit]conflict sloved.
+
+15 commit]added login_required decorator to add_to_cart view function.
+HttpResponseRedirect added to addtocart, removefromcart and cartitemdelete
+created new app orders, checkout.html,order_views.html and does the urls routing n view functions for orders functionality.
+
