@@ -1,0 +1,94 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block start %}
+
+
+<!-- ***** About Area Starts ***** -->
+<div class="about-us" style="margin-top: 200px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="left-image">
+                    <img src="{% static 'images/about-left-image.jpg' %}" alt="">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="right-content">
+                    <h4>About Us &amp; Our Services</h4>
+                    <span>From daily essentials to trendy fashion, cutting-edge electronics to delightful toys.</span>
+                    <div class="quote">
+                        <i class="fa fa-quote-left"></i><p>Discover the convenience of modern shopping at Family Mart, where your family's needs and desires are just a click away.</p>
+                    </div>
+                    <p>Family Mart is your ultimate destination for all things ecommerce. Our platform offers a diverse and extensive range of products, catering to every member of your family. Family Mart provides a seamless online shopping experience that brings the mall to your fingertips. With a user-friendly interface, secure payment options, and swift nationwide delivery, we strive to make your shopping journey convenient and enjoyable. </p>
+                    <ul>
+                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                        <li><a href="#"><i class="fa fa-behance"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ***** About Area Ends ***** -->
+
+<!-- ***** Our Category  Area Starts ***** -->
+<section class="our-team">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-heading">
+                    <h2>Our wide range &amp; variety of products</h2>
+                    <span>Details to details is what makes Hexashop different from the other themes.</span>
+                </div>
+            </div>
+            {% for i in categories %}
+            <div class="col-lg-6">
+                <div class="team-item">
+                    <div class="thumb">
+                        <img src="{{i.image.url}}" height="200" width="700">
+                    </div>
+                    <div class="down-content">
+                        <h4>{{i.name}}</h4>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+<!-- ***** Our Category Area Ends ***** -->
+
+<!-- ***** Services Area Starts ***** -->
+<section class="our-services">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-heading">
+                    <h2>Our Services</h2>
+                    <span>Details to details is what makes Hexashop different from the other themes.</span>
+                </div>
+            </div>
+            <div class="col-lg-6" style="max-height: 500px;">
+                <div class="service-item">
+                    <h4>Home Delivery</h4>
+                    <p>
+                        Family Mart's home delivery system is designed to bring convenience right to your doorstep. With a focus on efficiency and reliability, our delivery service ensures that your chosen products are delivered in a timely manner and in excellent condition.</p>
+                    <img src="{% static 'images/service-01.jpg' %}" alt="">
+                </div>
+            </div> 
+            <div class="col-lg-6" style="max-height: 500px;">
+                <div class="service-item">
+                    <h4>24x7 Customer Support</h4>
+                    <p>Family Mart takes pride in offering 24x7 customer support to ensure that your shopping experience is smooth and hassle-free. Our dedicated support team is available  to assist you with any inquiries, concerns, or technical issues you might encounter</p>
+                    <img src="{% static 'images/service-01.jpg' %}" alt="">
+                </div>
+            </div>   
+        </div>
+    </div>
+</section>
+<!-- ***** Services Area Ends ***** -->
+
+{% endblock %}

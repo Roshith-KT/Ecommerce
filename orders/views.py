@@ -38,7 +38,7 @@ def checkout(request):
             )
             orderitem.save()
         cart.delete()
-        return redirect('/')
+        return redirect('orders:payment_success')
     return render(request,'orders/checkout.html')
 
 
@@ -47,3 +47,16 @@ def orders_view(request):
     order=Order.objects.get(user=user)
     order_items=OrderItem.objects.all().filter(order=order).order_by('-created_at')
     return render(request,'orders/orders_view.html',{'order_items':order_items})
+
+def order_tracking(request):
+    return render(request,'orders/ordertracking.html')
+
+def tracked_order(request):
+    return render(request,'orders/tracked_order.html')
+
+
+def payment_success(request):
+    return render(request,'orders/success.html')
+
+def payment_failure(request):
+    return render(request,'orders/failure.html')

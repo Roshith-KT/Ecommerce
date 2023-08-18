@@ -1,0 +1,21 @@
+{% extends 'base/base.html' %}
+
+{% block start %}
+<head>
+    <title>Redirect Page</title>
+    <script>
+        setTimeout(function() {
+            window.location.href = "{% url 'orders:orders_view' %}";
+        }, 1000); // ! important.. to get 10 seconds ,we must add the time in milliseconds format
+    </script>
+</head>
+
+<div class="container">
+     <div class="cart">
+        <div style="background-color: white; text-align: center;">
+            <h1>Payment is successfull</h1>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

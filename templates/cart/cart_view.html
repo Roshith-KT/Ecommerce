@@ -4,8 +4,9 @@
 
 
 <div class="container">
-       
+    
     <div class="cart">
+        {% if cart_items %}  
         <table>
             <tr>
                 <th colspan="6" >Your Items</th>
@@ -41,7 +42,12 @@
                 <th colspan="2"><a href="{% url 'orders:checkout' %}" class="btn btn-dark">Checkout</a></th>
             </tr>
         </table>
-        <h1>Your Shopping Cart is Empty</h1>
+        {% else %}
+        <div style="background-color: white; text-align: center;">
+        <h1>Your Shopping Cart is Empty!!!!!!</h1>
+        <p style="margin-top: 50px; font-size:x-large;"><a href="{% url 'wholeshopview:allProductsView' %}">Continue Shopping</a></p>
+        </div>
+        {% endif %}
         
 
     </div>

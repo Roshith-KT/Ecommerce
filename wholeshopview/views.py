@@ -80,3 +80,22 @@ def categoryProductView(request, slug):
 
     }
     return render(request, 'wholeshopview/category_products_view.html', context)
+
+
+def aboutus(request):
+    categories=Category.objects.all()
+    context = {
+        'categories':categories
+    }
+    return render(request,'wholeshopview/aboutus.html',context)
+
+def contactus(request):
+    return render(request,'wholeshopview/contactus.html')
+
+
+def help(request):
+    return render(request,'wholeshopview/help.html')
+
+
+def faq(request):
+    return render(request,'wholeshopview/faq.html')

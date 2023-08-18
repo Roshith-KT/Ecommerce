@@ -52,3 +52,5 @@ creates customer login and register functionality with account activation using 
 HttpResponseRedirect added to addtocart, removefromcart and cartitemdelete
 created new app orders, checkout.html,order_views.html and does the urls routing n view functions for orders functionality.
 
+16 commit]created aboutus,contactus,faq,help,failure,success,ordertracking,tracked_order templates.
+updates codeversion.txt.

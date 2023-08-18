@@ -1,0 +1,48 @@
+{% extends 'base/base.html' %}
+
+{% block start %}
+
+
+<div class="container">
+       
+    <div class="cart">
+        <table>
+            <tr>
+                <th colspan="7" >Your Orders</th>
+            </tr>
+            <tr style="background-color: beige; color:#2a2a2a;">
+                <th colspan="2">Product</th>
+                <th>Qty</th>
+                <th>Total</th>
+                <th>Status</th>
+                <th>Delivery</th>
+                <th>Details</th>
+            </tr>
+            <!--{% for i in order_items %}-->
+            <tr>
+                <td><img src="" height="100" width="70"></td>
+                <td>Nokia</td>
+                <td>Qty:3</td>
+                <td>Total: Rs.5997</td>
+                <td>Status: InTransit</td>
+                <td>05.09.2023</td>
+                <td>
+                    <a href="" style="color:beige;">
+                        <i class="fa fa-info-circle" style="margin-right: 20px;" aria-hidden="true"></i>
+                        <i class="fa fa-download" aria-hidden="true"></i>
+                    </a>
+                </td>
+
+            </tr>
+            <!--{% endfor %}-->
+        </table>
+        
+
+    </div>
+
+    
+
+</div>
+
+
+{% endblock %}
