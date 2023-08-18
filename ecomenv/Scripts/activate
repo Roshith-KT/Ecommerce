@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\roshi\OneDrive\Desktop\Ecommerce\ecomenv"
+VIRTUAL_ENV="C:\Users\roshi\OneDrive\Desktop\github\Ecommerce\ecomenv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

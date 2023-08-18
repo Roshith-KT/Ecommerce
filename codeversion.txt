@@ -54,3 +54,6 @@ created new app orders, checkout.html,order_views.html and does the urls routing
 
 16 commit]created aboutus,contactus,faq,help,failure,success,ordertracking,tracked_order templates.
 updates codeversion.txt.
+
+17 commit]solved problem with ecomenv virtualenv
+created and updated requirements.txt
