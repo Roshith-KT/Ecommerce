@@ -57,3 +57,5 @@ updates codeversion.txt.
 
 17 commit]solved problem with ecomenv virtualenv
 created and updated requirements.txt
+
+18 commit]password reset functionality added.

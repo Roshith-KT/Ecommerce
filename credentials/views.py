@@ -2,9 +2,11 @@ from django.shortcuts import render,redirect
 from django.contrib.auth.models import User
 from django.contrib import messages, auth
 from django.http import HttpResponseRedirect
-from .emails import send_account_activation_email
+from .emails import send_account_activation_email,send_password_reset_otp
 from.models import Profile
 import uuid
+import random
+from django.contrib import messages
 # Create your views here.
 
 def logout(request):
@@ -72,4 +74,38 @@ def activate_account(request,email_token):
     profile.is_email_verified=True
     profile.save()
     return redirect('credentials:login')
-    
+
+
+def password_reset(request):
+    if request.method=='POST':
+        email=request.POST['email']
+        password_reset_otp(email)
+        return redirect('credentials:password_reset_page', email=email)
+
+    return render(request,'credentials/password_reset.html')
+
+
+def password_reset_otp(email):
+    user=User.objects.get(email=email)
+    profile=Profile.objects.get(user=user)
+    profile.otp=random.randint(1000, 9999)
+    profile.save()
+    send_password_reset_otp(email,profile.otp)
+
+
+def password_reset_page(request,email):
+    if request.method == 'POST':
+        otp=request.POST['otp']
+        new_password=request.POST['new_password']
+        user=User.objects.get(email=email)
+        profile=Profile.objects.get(user=user)
+        if int(otp)==profile.otp:
+            user.set_password(new_password)
+            user.save()
+            messages.info(request,"Password is successfully updated")
+            return HttpResponseRedirect(request.path_info)
+        else:
+            messages.info(request,'Invalid OTP')
+            return HttpResponseRedirect(request.path_info)
+    return render(request,'credentials/password_reset_page.html')
+

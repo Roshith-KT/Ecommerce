@@ -9,6 +9,7 @@ class Profile(models.Model):
     profile_image=models.ImageField(upload_to='profile_image',default='noImage.png')
     mobile=models.IntegerField(blank=True,null=True,unique='True')
     address=models.TextField(blank=True,null=True,max_length=255)
+    otp=models.IntegerField(blank=True,null=True)
     
     def __str__(self):
         return self.user.username

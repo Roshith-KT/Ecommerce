@@ -8,3 +8,10 @@ def send_account_activation_email(email, email_token):
     email_from = settings.EMAIL_HOST_USER
     message=f'click on the link to activate your account http://127.0.0.1:8000/credentials/activate/{email_token}'
     send_mail(subject,message,email_from,[email,])
+
+
+def send_password_reset_otp(email, otp):
+    subject = "Family Mart Customer Account Password Reset OTP"
+    email_from = settings.EMAIL_HOST_USER
+    message=f'OTp for password reset is {otp}'
+    send_mail(subject,message,email_from,[email,])
