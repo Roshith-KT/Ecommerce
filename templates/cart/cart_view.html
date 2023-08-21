@@ -1,4 +1,4 @@
-{% extends 'base/base.html' %}
+{% extends 'base/second_base.html' %}
 
 {% block start %}
 
@@ -43,7 +43,8 @@
             </tr>
         </table>
         {% else %}
-        <div style="background-color: white; text-align: center;">
+        <div style="background-color: white; text-align: center;
+        padding-top: 50px;">
         <h1>Your Shopping Cart is Empty!!!!!!</h1>
         <p style="margin-top: 50px; font-size:x-large;"><a href="{% url 'wholeshopview:allProductsView' %}">Continue Shopping</a></p>
         </div>

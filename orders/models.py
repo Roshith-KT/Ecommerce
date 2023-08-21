@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from datetime import timedelta
+import uuid
 # Create your models here.
 
 
@@ -36,11 +37,10 @@ class OrderItem(models.Model):
     mobile=models.IntegerField()
     email=models.CharField(max_length=255)
     created_at=models.DateTimeField(auto_now_add=True)
+    tracking_id = models.IntegerField(unique=True,null=True,blank=True)
 
     def delivery_date(self):
         return self.created_at + timedelta(days=6)
 
     def __str__(self):
         return '{}'.format(self.product)
-
-    

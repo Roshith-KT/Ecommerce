@@ -41,17 +41,11 @@
     <link rel="stylesheet" href="{% static 'css/credentials.css' %}" />
     <link rel="stylesheet" href="{% static 'css/cart.css' %}" />
     <link rel="stylesheet" href="{% static 'css/checkout.css' %}" />
-    <!--
-
-TemplateMo 571 Hexashop
-
-https://templatemo.com/tm-571-hexashop
-
--->
+ 
   </head>
 
   <body>
-    <!-- ***** Preloader Start *****
+    ***** Preloader Start *****
     <div id="preloader">
         <div class="jumper">
             <div></div>
@@ -59,7 +53,7 @@ https://templatemo.com/tm-571-hexashop
             <div></div>
         </div>
     </div>  
-    ***** Preloader End ***** -->
+    ***** Preloader End *****
 
     <!-- ***** Header Area Start ***** -->
     <header class="header-area header-sticky">
@@ -109,6 +103,7 @@ https://templatemo.com/tm-571-hexashop
                   <ul>
                     <li><a href="">Profile</a></li>
                     <li><a href="{% url 'orders:orders_view' %}">Orders</a></li>
+                    <li><a href="{% url 'orders:order_tracking' %}">Track Orders</a></li>
                   </ul>
                 </li>
                 <li class="scroll-to-section">

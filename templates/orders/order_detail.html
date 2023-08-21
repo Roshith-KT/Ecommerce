@@ -1,0 +1,73 @@
+{% extends 'base/base.html' %}
+
+{% block start %}
+
+<style>
+    .box1{
+        height: auto;
+        text-align: right;
+    }
+    .box2{
+        height: auto;
+    }
+
+    .box1 h6{
+        padding-bottom: 20px;
+    }
+
+    .box2 h6{
+        padding-bottom: 20px;
+    }
+
+    .box2 a{
+        padding-left: 10px;
+    }
+
+</style>
+
+
+<div class="container">
+       
+    <!--<div class="cart">
+        <table>
+            <tr>
+                <th colspan="2" >Order detail</th>
+            </tr>
+            <tr style="background-color: beige; color:#2a2a2a;">
+                <th colspan="2">Tracking ID: {{order_item.tracking_id}}
+                    <tr><td>Tracking ID: {{order_item.tracking_id}}</td></tr>
+                    <tr><td>Tracking ID: {{order_item.tracking_id}}</td></tr>
+                </th>
+            </tr>
+            <tr style="background-color: beige; color:#2a2a2a;">
+                <th colspan="2">Product: {{order_item.product.name}}</th>
+            </tr>
+            
+        </table>
+    </div>-->
+
+
+    <div style="margin-top: 170px; " id ="row" class="row">
+        <div class="col-lg-6 box1" >
+            <h6>Product:</h6>
+            <h6>Quantity:</h6>
+            <h6>Total:</h6>
+            <h6>Tracking ID:</h6>
+            <h6>Delivery Date:</h6>
+        </div>
+        <div class="col-lg-6 box2">
+            <h6>{{order_item.product}}</h6>
+            <h6>{{order_item.quantity}}</h6>
+            <h6>{{order_item.price}}:</h6>
+            <h6>{{order_item.tracking_id}}<a href="{% url 'orders:tracked_order' order_item.tracking_id %}">Track Order</a></h6>
+            <h6>{{order_item.delivery_date}}</h6>
+        </div>
+    </div>
+    
+
+    
+
+</div>
+
+
+{% endblock %}

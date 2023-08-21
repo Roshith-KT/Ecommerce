@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from cart.models import Cart,CartItem
 from . models import Order,OrderItem
+import random
 # Create your views here.
 def checkout(request):
     if request.method == 'POST':
@@ -34,7 +35,8 @@ def checkout(request):
                 country=country,
                 mobile=mobile,
                 email=email,
-                image=i.product.image
+                image=i.product.image,
+                tracking_id=random.randint(1000000,9999999)
             )
             orderitem.save()
         cart.delete()
@@ -48,11 +50,28 @@ def orders_view(request):
     order_items=OrderItem.objects.all().filter(order=order).order_by('-created_at')
     return render(request,'orders/orders_view.html',{'order_items':order_items})
 
+def order_detail(request,id):
+    order_item=OrderItem.objects.get(id=id)
+    context={
+        "order_item":order_item
+    }
+    return render(request,'orders/order_detail.html',context)
+
 def order_tracking(request):
+    if request.method=='POST':
+        tracking_id=request.POST['tracking_id']
+        return redirect('orders:tracked_order',tracking_id=tracking_id)
     return render(request,'orders/ordertracking.html')
 
-def tracked_order(request):
-    return render(request,'orders/tracked_order.html')
+def tracked_order(request,tracking_id):
+    try:
+        order_item=OrderItem.objects.get(tracking_id=tracking_id)
+    except OrderItem.DoesNotExist:
+        order_item=None
+    context={
+            "order_item": order_item
+        }
+    return render(request,'orders/tracked_order.html',context)
 
 
 def payment_success(request):

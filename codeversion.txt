@@ -59,3 +59,6 @@ updates codeversion.txt.
 created and updated requirements.txt
 
 18 commit]password reset functionality added.
+
+19 commit]tracking order functionality implemented
+template preloader activated
