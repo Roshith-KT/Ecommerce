@@ -62,3 +62,6 @@ created and updated requirements.txt
 
 19 commit]tracking order functionality implemented
 template preloader activated
+
+20 commit]generate and download invoice functionality addded
+updated category product view from wholeshopview app

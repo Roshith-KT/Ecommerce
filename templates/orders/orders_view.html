@@ -30,7 +30,7 @@
                     <a href="{% url 'orders:order_detail' i.id %}" style="color:beige;">
                         <i class="fa fa-info-circle" style="margin-right: 20px;" aria-hidden="true"></i>
                     </a>
-                    <a href="" style="color:beige;">
+                    <a href="{% url 'orders:generate_invoice' i.id %}" style="color:beige;">
                         <i class="fa fa-download" aria-hidden="true"></i>
                     </a>
                 </td>

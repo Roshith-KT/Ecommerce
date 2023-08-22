@@ -41,6 +41,13 @@ class OrderItem(models.Model):
 
     def delivery_date(self):
         return self.created_at + timedelta(days=6)
+    
+    def taxable_amount(self):
+        return (self.price*100)/118
+    
+    
+    def tax_amount(self):
+        return (self.price*18)/118
 
     def __str__(self):
         return '{}'.format(self.product)

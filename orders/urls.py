@@ -11,4 +11,5 @@ urlpatterns=[
     path('tracked_order/<str:tracking_id>',views.tracked_order,name='tracked_order'),
     path('payment_success',views.payment_success,name='payment_success'),
     path('payment_failure',views.payment_failure,name='payment_failure'),
+    path('generate_invoice/<int:id>',views.generate_invoice,name="generate_invoice"),
 ]
