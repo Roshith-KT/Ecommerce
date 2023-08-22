@@ -65,3 +65,5 @@ template preloader activated
 
 20 commit]generate and download invoice functionality addded
 updated category product view from wholeshopview app
+
+21 commit]requirements.txt updated
