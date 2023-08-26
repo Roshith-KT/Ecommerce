@@ -67,3 +67,6 @@ template preloader activated
 updated category product view from wholeshopview app
 
 21 commit]requirements.txt updated
+
+22 commit]creates gitigore file adds  .vscode & ecomenv file to it.
+installed ecomadmin app for Family Mart Ecommerce Admin Panel and rendered admin panel template.
