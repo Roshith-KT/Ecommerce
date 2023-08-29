@@ -70,3 +70,7 @@ updated category product view from wholeshopview app
 
 22 commit]creates gitigore file adds  .vscode & ecomenv file to it.
 installed ecomadmin app for Family Mart Ecommerce Admin Panel and rendered admin panel template.
+
+23 commit]Removed ecomenv and .vscode folders
+
+24 commit]ecomadmin app views and templates updated

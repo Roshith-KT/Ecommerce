@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from credentials.models import Profile
 from wholeshopview.models import Product
-from orders.models import Order
+from orders.models import Order,OrderItem
 # Create your views here.
 
 def ecomadmin_dash(request):
@@ -15,3 +15,26 @@ def ecomadmin_dash(request):
     }
     return render(request,'ecomadmin/ecomadmin_dash.html',context)
 
+
+def products(request):
+    products=Product.objects.all()
+    context={
+        'products':products
+    }
+    return render(request,'ecomadmin/products.html',context)
+
+
+def orders(request):
+    orders=OrderItem.objects.all()
+    context={
+        'orders':orders
+    }
+    return render(request,'ecomadmin/orders.html',context)
+
+
+def customers(request):
+    customers=Profile.objects.all()
+    context={
+        'customers':customers
+    }
+    return render(request,'ecomadmin/customers.html',context)
