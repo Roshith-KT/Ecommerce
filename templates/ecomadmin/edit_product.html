@@ -51,26 +51,28 @@
 </head>
 
 <br><br>
-<h3 style="text-align:center;">UPDATE CUSTOMER</h3>
+<h3 style="text-align:center;">UPDATE PRODUCT</h3>
 <div>
   <form method="post" autocomplete="off" enctype="multipart/form-data" style="margin-left:200px;margin-right:200px;">
       {% csrf_token %}
-        <label for="first_name">First Name</label>
-        {% render_field userform.first_name class="form-control" placeholder="First Name" %}
-        <label for="last_name">Last Name</label>
-        {% render_field userform.last_name class="form-control" placeholder="Last Name" %}
-          <label for="mobile">Mobile</label>
-          {% render_field profileform.mobile class="form-control" placeholder="Mobile" %}
-            <label for="address">Address</label>
-          {% render_field profileform.address class="form-control" placeholder="Address" %}
-          
-        <label for="username">Username</label>
-        {% render_field userform.username class="form-control" placeholder="Username" %} <br><br>
-        <label for="username">Verified</label>
-        {% render_field profileform.is_email_verified class="form-control" placeholder="Verified" %} <br><br>
-        <label for="profile_pic">Profile Picture</label>
-        {% render_field profileform.profile_image class="form-control" placeholder="Verified" %}
-<br><br>
+        <label for="name">Name</label>
+        {% render_field productform.name class="form-control" placeholder="Name" %}
+
+        <label for="category">Category</label>
+        {% render_field productform.category class="form-control" placeholder="Category" %}
+
+        <label for="type">Type</label>
+        {% render_field productform.type class="form-control" placeholder="Type" %}
+
+        <label for="price">Price</label>
+        {% render_field productform.price class="form-control" placeholder="Price" %}
+
+        <label for="description">Description</label>
+        {% render_field productform.description class="form-control" placeholder="description" %}
+
+        <label for="image">Image</label>
+        {% render_field productform.image class="form-control" placeholder="image" %}
+       <br><br>
     <input style="background-color:#2a2a2a;" type="submit" value="Update">
   </form>
 </div>

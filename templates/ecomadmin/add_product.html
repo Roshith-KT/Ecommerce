@@ -51,27 +51,37 @@
 </head>
 
 <br><br>
-<h3 style="text-align:center;">UPDATE CUSTOMER</h3>
+<h3 style="text-align:center;">ADD PRODUCT</h3>
 <div>
   <form method="post" autocomplete="off" enctype="multipart/form-data" style="margin-left:200px;margin-right:200px;">
       {% csrf_token %}
-        <label for="first_name">First Name</label>
-        {% render_field userform.first_name class="form-control" placeholder="First Name" %}
-        <label for="last_name">Last Name</label>
-        {% render_field userform.last_name class="form-control" placeholder="Last Name" %}
-          <label for="mobile">Mobile</label>
-          {% render_field profileform.mobile class="form-control" placeholder="Mobile" %}
-            <label for="address">Address</label>
-          {% render_field profileform.address class="form-control" placeholder="Address" %}
-          
-        <label for="username">Username</label>
-        {% render_field userform.username class="form-control" placeholder="Username" %} <br><br>
-        <label for="username">Verified</label>
-        {% render_field profileform.is_email_verified class="form-control" placeholder="Verified" %} <br><br>
-        <label for="profile_pic">Profile Picture</label>
-        {% render_field profileform.profile_image class="form-control" placeholder="Verified" %}
-<br><br>
-    <input style="background-color:#2a2a2a;" type="submit" value="Update">
+        <label for="name">Name</label>
+        <input type="text" name="name" class="form-control" >
+
+        <label for="category">Category</label>
+        <select name="category" id="category">
+            {% for i in categories%}
+            <option value="{{i.name}}">{{i.name}}</option>
+            {% endfor %}
+        </select>
+
+        <label for="type">Type</label>
+        <select name="type" id="type">
+            {% for i in types%}
+            <option value="{{i.name}}">{{i.name}}</option>
+            {% endfor %}
+        </select>
+
+        <label for="price">Price</label>
+        <input type="text" name="price" class="form-control" >
+
+        <label for="description">Description</label>
+        <input type="text" name="description" class="form-control" >
+
+        <label for="image">Image</label>
+        <input type="file" name="image" class="form-control" >
+       <br><br>
+    <input style="background-color:#2a2a2a;" type="submit" value="Add">
   </form>
 </div>
 

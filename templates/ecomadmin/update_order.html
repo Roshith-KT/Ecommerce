@@ -51,26 +51,13 @@
 </head>
 
 <br><br>
-<h3 style="text-align:center;">UPDATE CUSTOMER</h3>
+<h3 style="text-align:center;">UPDATE ORDER</h3>
 <div>
   <form method="post" autocomplete="off" enctype="multipart/form-data" style="margin-left:200px;margin-right:200px;">
       {% csrf_token %}
-        <label for="first_name">First Name</label>
-        {% render_field userform.first_name class="form-control" placeholder="First Name" %}
-        <label for="last_name">Last Name</label>
-        {% render_field userform.last_name class="form-control" placeholder="Last Name" %}
-          <label for="mobile">Mobile</label>
-          {% render_field profileform.mobile class="form-control" placeholder="Mobile" %}
-            <label for="address">Address</label>
-          {% render_field profileform.address class="form-control" placeholder="Address" %}
-          
-        <label for="username">Username</label>
-        {% render_field userform.username class="form-control" placeholder="Username" %} <br><br>
-        <label for="username">Verified</label>
-        {% render_field profileform.is_email_verified class="form-control" placeholder="Verified" %} <br><br>
-        <label for="profile_pic">Profile Picture</label>
-        {% render_field profileform.profile_image class="form-control" placeholder="Verified" %}
-<br><br>
+        <label for="status">Status</label>
+        {% render_field orderform.status class="form-control" placeholder="status.value" %}
+       <br><br>
     <input style="background-color:#2a2a2a;" type="submit" value="Update">
   </form>
 </div>

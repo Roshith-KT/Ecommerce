@@ -46,6 +46,9 @@ INSTALLED_APPS = [
     'search',
     'orders',
     'ecomadmin',
+    
+    #others
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [

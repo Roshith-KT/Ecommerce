@@ -74,3 +74,6 @@ installed ecomadmin app for Family Mart Ecommerce Admin Panel and rendered admin
 23 commit]Removed ecomenv and .vscode folders
 
 24 commit]ecomadmin app views and templates updated
+
+25 commit]ecomadmin templates updated
+add product,edit product,update customer,delete customer,update order functionalities added. 

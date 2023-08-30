@@ -21,16 +21,13 @@
       margin: 100px;
     }
 
-    .material-symbols-outlined {
-        font-variation-settings:
-        'FILL' 0,
-        'wght' 400,
-        'GRAD' 0,
-        'opsz' 24
+
+    .panel-primary{
+      border:10px solid #2a2a2a;
     }
 
-    .material-symbols-outlined{
-      color:green;
+    .panel{
+      border:2px solid #2a2a2a;
     }
 
   </style>
@@ -38,7 +35,7 @@
 <br><br>
 <div class="container">
   <div class="panel panel-primary">
-    <div class="panel-heading">
+    <div style="background-color:#2a2a2a;" class="panel-heading">
       <h6 class="panel-title">Products</h6>
     </div>
     <table class="table table-hover" id="dev-table">
@@ -54,9 +51,10 @@
         </tr>
       </thead>
       {% for i in products %}
-      <th><a href=""><span class="material-symbols-outlined">
-        sync
-        </span></a></th>
+      <th><a href="{% url 'ecomadmin:edit_product' i.id %}"><svg style="color:#2a2a2a;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+        <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+      </svg></a></th>
           <th>{{i.name}}</th>
           <th>{{i.image.url}}</th>
           <th>{{i.price}}</th>
@@ -68,8 +66,8 @@
       
     </table>
     <br>
-    <div class="panel-heading">
-      <h6 class="panel-title"><a href=""><span class="material-symbols-outlined" style="color:white; padding-right:10px;">
+    <div style="background-color:#2a2a2a;" class="panel-heading">
+      <h6 class="panel-title"><a href="{% url 'ecomadmin:add_product' %}"><span class="material-symbols-outlined" style="color:white; padding-right:10px;">
         note_stack_add
         </span>Products</a></h6>
     </div>
