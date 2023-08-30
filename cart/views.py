@@ -85,5 +85,6 @@ def cartitem_delete(request,id):
 
 
 #checkout section
+@login_required(login_url='credentials:login')
 def checkout(request):
     return render(request,'orders/checkout.html')

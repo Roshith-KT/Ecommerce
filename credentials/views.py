@@ -1,26 +1,37 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.models import User
 from django.contrib import messages, auth
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect,HttpResponse
 from .emails import send_account_activation_email,send_password_reset_otp
 from.models import Profile
 import uuid
 import random
 from django.contrib import messages
+from django.contrib.auth.models import Group
+from django.contrib.auth.decorators import login_required
+
+
 # Create your views here.
 
+@login_required(login_url='credentials:login')
 def logout(request):
     auth.logout(request)
     return redirect('credentials:login')
 
 def login(request):
+    if request.user.is_authenticated:
+        return redirect('wholeshopview:home')
     if request.method == "POST":
         username = request.POST['username']
         password = request.POST['password']
         user = auth.authenticate(username=username, password=password)
 
         if user is not None:
-            profile=Profile.objects.get(user=user)
+            try:
+                profile=Profile.objects.get(user=user)
+            except Profile.DoesNotExist:
+                messages.info(request,"No such user")
+                return redirect('credentials:login')
             if profile.is_email_verified is True:
                 auth.login(request, user)
                 return redirect('wholeshopview:home')
@@ -57,6 +68,8 @@ def register(request):
                 user.save()
                 profile=Profile.objects.create(user=user,email_token=str(uuid.uuid4()))
                 profile.save()
+                my_customer_group = Group.objects.get_or_create(name='CUSTOMER')
+                my_customer_group[0].user_set.add(user)
                 send_account_activation_email(email,profile.email_token)
                 
                 messages.info(request,"Account created successfully, Check your Mail and Verify Your Email inorder to Login!!!")
@@ -108,4 +121,6 @@ def password_reset_page(request,email):
             messages.info(request,'Invalid OTP')
             return HttpResponseRedirect(request.path_info)
     return render(request,'credentials/password_reset_page.html')
+
+
 

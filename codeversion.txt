@@ -77,3 +77,6 @@ installed ecomadmin app for Family Mart Ecommerce Admin Panel and rendered admin
 
 25 commit]ecomadmin templates updated
 add product,edit product,update customer,delete customer,update order functionalities added. 
+
+26 commit]created admin_login,admin_logout templates
+admin login n logout functionalities created.

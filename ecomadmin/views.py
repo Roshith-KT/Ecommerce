@@ -5,8 +5,10 @@ from orders.models import Order,OrderItem
 from django.contrib.auth.models import User
 from . forms import UserForm,ProfileForm,OrderForm,ProductForm
 from django.http import HttpResponseRedirect
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
+@login_required(login_url='credentials:adminlogin')
 def ecomadmin_dash(request):
     customer_count=Profile.objects.all().count()
     product_count=Product.objects.all().count()

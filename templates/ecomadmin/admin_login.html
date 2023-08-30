@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load widget_tweaks %}
 {% load static %}
 <html lang="en" dir="ltr">
 
@@ -151,10 +152,18 @@
     #check {
       display: none;
     }
+
+    .form-ctrl{
+        margin-bottom:20px;
+        height:50px;
+        width:250px;
+        text-align:center;
+    }
   </style>
 
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 
 
 </head>
@@ -177,34 +186,33 @@
     {% endif %}
   </header>
   <!--header area end-->
-  <!--sidebar start-->
-  <div class="sidebar" style="
-    margin-top: 50px;
-">
-    <center>
 
-      <img src="{% static "images/admin_icon.jpeg" %}" class="profile_image" alt="">
-      <h5 style="color:rgb(230, 230, 230)">Admin</h5>
-
-    </center>
-
-    <a href="{% url 'ecomadmin:ecomadmin_dash' %}"><span>Dashboard</span></a>
-    <a href="{% url 'ecomadmin:customers' %}"><span>Customers</span></a>
-    <a href="{% url 'ecomadmin:orders' %}"><span>Orders</span></a>
-    <a href="{% url 'ecomadmin:products' %}"><span>Products</span></a>
-    
-
-
-  </div>
-  <!--sidebar end-->
 
 
   <!--content start-->
   <div class="content">
     <br><br><br><br><br>
-    {% block content %}
+    {% if user.is_authenticated %}
+    <div style=" margin-top:100px; margin-left:400px; height:auto; width:500px;
+    color:#2a2a2a; text-align:center;">
+        <h1>Already logged in</h1>
+    </div>
+    {% else %}
+    <div style="background-color:#2a2a2a; margin-top:100px; margin-left:400px; height:400px; width:500px;
+    color:white; text-align:center; border-radius:20px;">
+        <form class="box" method="post">
+            {% csrf_token %}
+            <h1 style=>ADMIN LOGIN</h1>
+            <p class="text-muted"> Please enter your username and password!</p>
 
-    {% endblock content %}
+             {% render_field form.username class="form-ctrl" placeholder="Username" %}<br>
+             {% render_field form.password class="form-ctrl" placeholder="Password" %}<br>
+
+             <input class="btn btn-light" type="submit" name="" value="Login">
+
+        </form>
+    </div>
+    {% endif %}
 
 
     <br><br><br>
