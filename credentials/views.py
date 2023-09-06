@@ -9,6 +9,7 @@ import random
 from django.contrib import messages
 from django.contrib.auth.models import Group
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.hashers import check_password
 
 
 # Create your views here.
@@ -124,3 +125,49 @@ def password_reset_page(request,email):
 
 
 
+def profile(request):
+    user=request.user
+    profile=Profile.objects.get(user=user)
+    if request.method=="POST":
+        first_name=request.POST['first_name']
+        last_name=request.POST['last_name']
+        mobile=request.POST['mobile']
+        address=request.POST['address']
+        post_code=request.POST['post_code']
+        area=request.POST['area']
+        email=request.POST['email']
+        country=request.POST['country']
+        state=request.POST['state']
+        user=request.user
+        profile=Profile.objects.get(user=user)
+        user.first_name=first_name
+        user.last_name=last_name
+        user.save()
+        profile.mobile=mobile
+        profile.address=address
+        profile.save()
+        return redirect('/')
+        
+    
+    context={
+        "user":user,
+        "profile":profile
+    }
+    return render(request,'credentials/profile.html',context)
+
+
+def change_password(request):
+    if request.method=="POST":
+        user=request.user
+        current_password=request.POST['current_password']
+        new_password=request.POST['new_password']
+        
+        if check_password(current_password, user.password):
+            user.set_password(new_password)
+            user.save()
+            messages.info(request, 'Password Updated Successfully')
+            return HttpResponseRedirect(request.path_info)
+        else:
+            messages.info(request,'Error! Check credentials provided and retry later')
+            return HttpResponseRedirect(request.path_info)
+    return render(request,'credentials/change_password.html')

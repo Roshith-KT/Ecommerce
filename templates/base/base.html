@@ -101,7 +101,7 @@
                 <li class="submenu">
                   <a href="javascript:;"><i class="fa fa-user" style="margin-right: 7px; color: darkslategray;" aria-hidden="true"></i>{{user.first_name}}</a>
                   <ul>
-                    <li><a href="">Profile</a></li>
+                    <li><a href="{% url 'credentials:profile' %}">Profile</a></li>
                     <li><a href="{% url 'orders:orders_view' %}">Orders</a></li>
                     <li><a href="{% url 'orders:order_tracking' %}">Track Orders</a></li>
                   </ul>
