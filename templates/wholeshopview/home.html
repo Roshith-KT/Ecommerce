@@ -32,11 +32,11 @@
                 <div class="thumb">
                   <div class="inner-content">
                     <h4>{{i.name}}</h4>
-                    <span>Best Trend Accessories</span>
+                    <span>Best {{i.name}} collections</span>
                   </div>
                   <div class="hover-content">
                     <div class="inner">
-                      <h4>Accessories</h4>
+                      <h4>{{i.name}}</h4>
                       <p>{{i.description}}</p>
                       <div class="main-border-button">
                         <a
@@ -276,7 +276,7 @@
 </section>
 <!-- ***** Explore Area Ends ***** -->
 
-<!-- ***** Social Area Starts ***** -->
+<!-- ***** Social Area Starts ***** 
 <section class="section" id="social">
   <div class="container">
     <div class="row">
@@ -359,7 +359,7 @@
     </div>
   </div>
 </section>
-<!-- ***** Social Area Ends ***** -->
+***** Social Area Ends ***** -->
 
 <!-- ***** Subscribe Area Starts ***** -->
 <div class="subscribe">
@@ -409,21 +409,21 @@
         <div class="row">
           <div class="col-6">
             <ul>
-              <li>Store Location:<br /><span>Kadavthur</span></li>
-              <li>Phone:<br /><span>0490-235689</span></li>
-              <li>Office Location:<br /><span>Thalassery</span></li>
+              <li>Store Location:<br /><span>{{store_address.store_location}}</span></li>
+              <li>Phone:<br /><span>{{store_address.phone}}</span></li>
+              <li>Office Location:<br /><span>{{store_address.office_location}}</span></li>
             </ul>
           </div>
           <div class="col-6">
             <ul>
-              <li>Work Hours:<br /><span>07:30 AM - 9:30 PM Daily</span></li>
-              <li>Email:<br /><span>fmartkdvr@gmail.com</span></li>
-              <li>
+              <li>Work Hours:<br /><span>{{store_address.work_hours}}</span></li>
+              <li>Email:<br /><span>{{store_address.email}}</span></li>
+              <!--<li>
                 Social Media:<br /><span
                   ><a href="#">Facebook</a>, <a href="#">Instagram</a>,
                   <a href="#">Behance</a>, <a href="#">Linkedin</a></span
                 >
-              </li>
+              </li>-->
             </ul>
           </div>
         </div>

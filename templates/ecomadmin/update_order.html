@@ -56,7 +56,7 @@
   <form method="post" autocomplete="off" enctype="multipart/form-data" style="margin-left:200px;margin-right:200px;">
       {% csrf_token %}
         <label for="status">Status</label>
-        {% render_field orderform.status class="form-control" placeholder="status.value" %}
+        {% render_field orderform.status class="form-control" placeholder=order.status value=order.status %}
        <br><br>
     <input style="background-color:#2a2a2a;" type="submit" value="Update">
   </form>

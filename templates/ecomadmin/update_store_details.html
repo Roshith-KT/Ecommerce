@@ -51,27 +51,25 @@
 </head>
 
 <br><br>
-<h3 style="text-align:center;">UPDATE PRODUCT</h3>
+<h3 style="text-align:center;">UPDATE STORE DETAILS</h3>
 <div>
   <form method="post" autocomplete="off" enctype="multipart/form-data" style="margin-left:200px;margin-right:200px;">
       {% csrf_token %}
-        <label for="name">Name</label>
-        {% render_field productform.name class="form-control" placeholder="Name" value=product.name %}
+        <label for="status">Store location</label>
+        {% render_field store_address_form.store_location class="form-control" placeholder="" value=store_address.store_location %}
 
-        <label for="category">Category</label>
-        {% render_field productform.category class="form-control" placeholder="Category" value=product.category.name %}
+        <label for="status">Working hours</label>
+        {% render_field store_address_form.work_hours class="form-control" placeholder="" value=store_address.work_hours %}
 
-        <label for="type">Type</label>
-        {% render_field productform.type class="form-control" placeholder="Type" value=product.type.name %}
+        <label for="status">Phone</label>
+        {% render_field store_address_form.phone class="form-control" placeholder="" value=store_address.phone %}
 
-        <label for="price">Price</label>
-        {% render_field productform.price class="form-control" placeholder="Price" value=product.price %}
+        <label for="status">Email</label>
+        {% render_field store_address_form.email class="form-control" placeholder="" value=store_address.email %}
 
-        <label for="description">Description</label>
-        {% render_field productform.description class="form-control" placeholder="description" value=product.description %}
+        <label for="status">Office location</label>
+        {% render_field store_address_form.office_location class="form-control" placeholder="" value=store_address.office_location %}
 
-        <label for="image">Image</label>
-        {% render_field productform.image class="form-control" placeholder="image" value=product.image %}
        <br><br>
     <input style="background-color:#2a2a2a;" type="submit" value="Update">
   </form>

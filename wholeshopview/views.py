@@ -2,7 +2,9 @@ from django.shortcuts import render
 from django.db.models import Q
 from . models import Type, Product, Category
 from django.core.paginator import Paginator
-
+from ecomadmin.models import Contact_Us,Store_Address
+from django.http import HttpResponseRedirect
+from django.contrib import messages
 # views
 
 
@@ -19,6 +21,8 @@ def home(request):
         type=type_men).order_by("-id")[:3]  # query set for latest 3 men products
     products_women = Product.objects.all().filter(
         type=type_women).order_by("-id")[:3]  # query set for latest 3 women products
+    
+    store_address=Store_Address.objects.get(id=1)
 
     context = {
         'type': type,
@@ -28,7 +32,9 @@ def home(request):
         'type_men': type_men,
         'type_women': type_women,
         'products_men': products_men,
-        'products_women': products_women
+        'products_women': products_women,
+        
+        'store_address':store_address,
     }
     return render(request, 'wholeshopview/home.html', context)
 
@@ -90,10 +96,35 @@ def aboutus(request):
     return render(request,'wholeshopview/aboutus.html',context)
 
 def contactus(request):
-    return render(request,'wholeshopview/contactus.html')
+    store_address=Store_Address.objects.get(id=1)
+    if request.method=="POST":
+        name=request.POST['name']
+        email=request.POST['email']
+        message=request.POST['message']
+        
+        Message=Contact_Us.objects.create(name=name,email=email,message=message)
+        Message.save()
+        messages.info(request,"Message Sent!")
+        return HttpResponseRedirect(request.path_info)
+    
+    context={
+        'store_address':store_address
+    }
+        
+           
+    return render(request,'wholeshopview/contactus.html',context)
 
 
 def help(request):
+    if request.method=="POST":
+        name=request.POST['name']
+        email=request.POST['email']
+        message=request.POST['message']
+        
+        Message=Contact_Us.objects.create(name=name,email=email,message=message)
+        Message.save()
+        messages.info(request,"Message Sent!")
+        return HttpResponseRedirect(request.path_info)
     return render(request,'wholeshopview/help.html')
 
 

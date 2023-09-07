@@ -3,7 +3,8 @@ from credentials.models import Profile
 from wholeshopview.models import Product,Category,Type
 from orders.models import Order,OrderItem
 from django.contrib.auth.models import User
-from . forms import UserForm,ProfileForm,OrderForm,ProductForm
+from . forms import UserForm,ProfileForm,OrderForm,ProductForm,StoreAddressForm
+from . models import Contact_Us,Store_Address
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 # Create your views here.
@@ -13,10 +14,12 @@ def ecomadmin_dash(request):
     customer_count=Profile.objects.all().count()
     product_count=Product.objects.all().count()
     order_count=Order.objects.all().count()
+    messages_count=Contact_Us.objects.all().count()
     context={
         'customer_count': customer_count,
         'product_count': product_count,
-        'order_count': order_count
+        'order_count': order_count,
+        'messages_count':messages_count
     }
     return render(request,'ecomadmin/ecomadmin_dash.html',context)
 
@@ -31,7 +34,10 @@ def products(request):
 def edit_product(request,id):
     product=Product.objects.get(id=id)
     productform=ProductForm(request.FILES,instance=product)
-    context={'productform':productform}
+    context={
+        'productform':productform,
+        'product':product,
+        }
     if request.method=="POST":
         productform=ProductForm(request.POST,request.FILES,instance=product)
         if productform.is_valid():
@@ -75,7 +81,10 @@ def orders(request):
 def update_order(request,id):
     order=OrderItem.objects.get(id=id)
     orderform=OrderForm(request.FILES,instance=order)
-    context={"orderform":orderform}
+    context={
+        "orderform":orderform,
+        "order":order
+        }
     if request.method=="POST":
         orderform=OrderForm(request.POST,request.FILES,instance=order)
         if orderform.is_valid():
@@ -115,4 +124,28 @@ def delete_customer(request,id):
     user=User.objects.get(id=id)
     user.delete()
     return redirect('ecomadmin:customers')
+    
+    
+    
+def customer_to_admin_messages(request):
+    Messages=Contact_Us.objects.all()
+    context={
+        'Messages':Messages
+    }
+    return render(request,'ecomadmin/customer_to_admin_messages.html',context)
+
+
+def update_store_details(request):
+    store_address=Store_Address.objects.get(id=1)
+    store_address_form=StoreAddressForm(request.FILES,instance=store_address)
+    context={
+        "store_address_form":store_address_form,
+        "store_address":store_address
+        }
+    if request.method=="POST":
+        store_address_form=StoreAddressForm(request.POST,request.FILES,instance=store_address)
+        if store_address_form.is_valid():
+            store_address_form.save()
+            return redirect('ecomadmin:ecomadmin_dash')
+    return render(request,'ecomadmin/update_store_details.html',context)
     

@@ -103,6 +103,26 @@
           </div>
         </div>
       </div>
+
+      <div class="col-md-4 col-xl-4">
+        <div class="card bg-c-blue order-card">
+          <div class="card-block">
+            <h6 class="m-b-20"><a href="{% url 'ecomadmin:customer_to_admin_messages' %}" style="text-decoration: none;color:white;">Messages</a></h6>
+           <h2 class="text-right"><i class="fa fa-comment f-left" aria-hidden="true"></i><span>{{messages_count}}</span></h2>
+            
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-xl-4">
+        <div class="card bg-c-blue order-card">
+          <div class="card-block">
+            <h6 class="m-b-20"><a href="{% url 'ecomadmin:update_store_details' %}" style="text-decoration: none;color:white;">Store settings</a></h6>
+           <h2 class="text-right"><i class="fa fa-cog f-left" aria-hidden="true"></i><span><i class="fa fa-wrench" aria-hidden="true"></i></span></h2>
+            
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 

@@ -13,4 +13,6 @@ urlpatterns =[
     path('update_order/<int:id>/',views.update_order,name='update_order'),
     path('edit_product/<int:id>/',views.edit_product,name='edit_product'),
     path('add_product',views.add_product,name='add_product'),
+    path('customer_to_admin_messages',views.customer_to_admin_messages,name='customer_to_admin_messages'),
+    path('update_store_details',views.update_store_details,name='update_store_details')
 ]
