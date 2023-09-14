@@ -59,6 +59,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    
+    #custom middleware
+    #'credentials.custom_login_middleware.CustomLoginMiddleware',
 ]
 
 ROOT_URLCONF = 'store.urls'
@@ -148,4 +151,7 @@ EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'roshiththedeveloper@gmail.com'
 EMAIL_HOST_PASSWORD = 'otrlxnadgopdlgtk'
+
+
+
 

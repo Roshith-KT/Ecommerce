@@ -6,10 +6,10 @@ from django.contrib.auth.models import User
 from . forms import UserForm,ProfileForm,OrderForm,ProductForm,StoreAddressForm
 from . models import Contact_Us,Store_Address
 from django.http import HttpResponseRedirect
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required,user_passes_test
 # Create your views here.
 
-@login_required(login_url='credentials:adminlogin')
+@login_required(login_url='credentials:admin_login')
 def ecomadmin_dash(request):
     customer_count=Profile.objects.all().count()
     product_count=Product.objects.all().count()
@@ -21,6 +21,10 @@ def ecomadmin_dash(request):
         'order_count': order_count,
         'messages_count':messages_count
     }
+    
+    if request.user.groups.filter(name='CUSTOMER').exists():
+        return redirect('wholeshopview:home')
+        
     return render(request,'ecomadmin/ecomadmin_dash.html',context)
 
 
@@ -29,6 +33,10 @@ def products(request):
     context={
         'products':products
     }
+    
+    if request.user.groups.filter(name='CUSTOMER').exists():
+        return redirect('wholeshopview:home')
+    
     return render(request,'ecomadmin/products.html',context)
 
 def edit_product(request,id):
@@ -69,6 +77,10 @@ def add_product(request):
         )
         product.save()
         return redirect('ecomadmin:products')
+    
+    if request.user.groups.filter(name='CUSTOMER').exists():
+        return redirect('wholeshopview:home')
+    
     return render(request,'ecomadmin/add_product.html',{'categories':categories,'types':types})
 
 def orders(request):
@@ -76,6 +88,10 @@ def orders(request):
     context={
         'orders':orders
     }
+    
+    if request.user.groups.filter(name='CUSTOMER').exists():
+        return redirect('wholeshopview:home')
+    
     return render(request,'ecomadmin/orders.html',context)
 
 def update_order(request,id):
@@ -98,6 +114,11 @@ def customers(request):
     context={
         'customers':customers
     }
+    
+    
+    if request.user.groups.filter(name='CUSTOMER').exists():
+        return redirect('wholeshopview:home')
+    
     return render(request,'ecomadmin/customers.html',context)
 
 def update_customer(request,id):
@@ -132,6 +153,10 @@ def customer_to_admin_messages(request):
     context={
         'Messages':Messages
     }
+    
+    if request.user.groups.filter(name='CUSTOMER').exists():
+        return redirect('wholeshopview:home')
+    
     return render(request,'ecomadmin/customer_to_admin_messages.html',context)
 
 

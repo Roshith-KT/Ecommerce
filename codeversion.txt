@@ -85,3 +85,7 @@ admin login n logout functionalities created.
 media files changed.-no errors
 
 28 commit]added custom store address models,updating store funcionality n cleared some errors
+
+29 commit]added django widget tweaks to requirements.txt
+
+30 commit]updated admin-login view n added restriction amoung customer and admin.

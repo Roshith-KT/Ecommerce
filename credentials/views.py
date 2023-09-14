@@ -171,3 +171,44 @@ def change_password(request):
             messages.info(request,'Error! Check credentials provided and retry later')
             return HttpResponseRedirect(request.path_info)
     return render(request,'credentials/change_password.html')
+
+
+
+def admin_login(request):
+    if request.user.is_authenticated:
+        return redirect('ecomadmin:ecomadmin_dash')
+    if request.method == "POST":
+        username = request.POST['username']
+        password = request.POST['password']
+        user = auth.authenticate(username=username, password=password)
+
+        if user is not None:
+            try:
+                profile=Profile.objects.get(user=user)
+                if profile:
+                    messages.info(request,"Invalid Credentials.. Check Your credentials")
+                    return redirect('credentials:admin_login')
+            except Profile.DoesNotExist:
+                auth.login(request, user)
+                return redirect('ecomadmin:ecomadmin_dash')
+        else:
+            messages.warning(request, "Invalid credentials")
+            return HttpResponseRedirect(request.path_info)
+    return render(request,'ecomadmin/admin_login.html')
+
+
+#function for providing restrictions amoung customers and admin 
+
+# def is_admin(user):
+#     if user.is_staff:
+#         return True
+
+# def is_customer(user):
+#     return user.groups.filter(name='CUSTOMER').exists()
+    
+
+# def after_login(request):
+#     if is_customer(request.user):
+#         return redirect('wholeshopview:home')
+#     else:
+#         return redirect('ecomadmin:ecomadmin_dash')

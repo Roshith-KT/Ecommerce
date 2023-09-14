@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.db.models import Q
 from . models import Type, Product, Category
 from django.core.paginator import Paginator
@@ -37,6 +37,9 @@ def home(request):
         'store_address':store_address,
     }
     return render(request, 'wholeshopview/home.html', context)
+
+def access_denied_view(request):
+    return redirect('ecomadmin:ecomadmin_dash')
 
 
 def typeProductsView(request, slug):

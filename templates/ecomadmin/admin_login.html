@@ -200,17 +200,23 @@
     {% else %}
     <div style="background-color:#2a2a2a; margin-top:100px; margin-left:400px; height:400px; width:500px;
     color:white; text-align:center; border-radius:20px;">
+        
         <form class="box" method="post">
-            {% csrf_token %}
-            <h1 style=>ADMIN LOGIN</h1>
-            <p class="text-muted"> Please enter your username and password!</p>
+          {% csrf_token %}
+          <h1 style=>ADMIN LOGIN</h1>
+          <p> Please enter your username and password!</p>
 
-             {% render_field form.username class="form-ctrl" placeholder="Username" %}<br>
-             {% render_field form.password class="form-ctrl" placeholder="Password" %}<br>
+           <input type="text" name="username" class="form-ctrl" placeholder="Username"><br>
+           <input type="password" name="password" class="form-ctrl" placeholder="Password"><br>
 
-             <input class="btn btn-light" type="submit" name="" value="Login">
+           <input class="btn btn-light" type="submit" name="" value="Login">
 
-        </form>
+      </form>
+      {% for msg in messages %}
+        <div class="alert alert-dark" role="alert">
+            {{msg}}
+        </div>
+        {% endfor %}
     </div>
     {% endif %}
 
