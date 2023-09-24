@@ -52,7 +52,12 @@ def checkout(request):
 
 def orders_view(request):
     user=request.user
-    order=Order.objects.get(user=user)
+    
+    try:
+        order=Order.objects.get(user=user)
+    except Order.DoesNotExist:
+        order=Order.objects.create(user=user)
+        
     order_items=OrderItem.objects.all().filter(order=order).order_by('-created_at')
     return render(request,'orders/orders_view.html',{'order_items':order_items})
 

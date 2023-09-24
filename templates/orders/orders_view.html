@@ -6,6 +6,7 @@
 <div class="container">
        
     <div class="cart">
+        {% if order_items %}
         <table>
             <tr>
                 <th colspan="7" >Your Orders</th>
@@ -38,6 +39,12 @@
             </tr>
             {% endfor %}
         </table>
+        {% else %}
+        <div style="background-color: white; text-align: center;padding-top: 50px;">
+            <h1>Currently No Orders!!!!!!</h1>
+            <p style="margin-top: 50px; font-size:x-large;"><a href="{% url 'wholeshopview:allProductsView' %}">Continue Shopping</a></p>
+        </div>
+        {% endif %}
         
 
     </div>
