@@ -1,0 +1,17 @@
+{% extends 'base/base.html' %}
+
+{% block start %}
+<head>
+    <title>Payment</title>
+</head>
+
+<div class="container">
+     <div class="cart">
+        <div style="background-color: white; text-align: center;height:200px;">
+            <a href = "{% url 'orders:create_order' string %}" type="button" class="btn btn-success mr-5">Success</a>
+            <a href="{% url 'orders:payment_failure' %}" type="button" class="btn btn-danger pl-4 pr-4">  Deny </a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

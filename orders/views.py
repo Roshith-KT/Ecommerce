@@ -7,6 +7,8 @@ from django.http import HttpResponse
 from django.template.loader import get_template
 from xhtml2pdf import pisa
 import os 
+import json
+from django.urls import reverse
 
 # Create your views here.
 def checkout(request):
@@ -19,35 +21,54 @@ def checkout(request):
         mobile=request.POST['mobile']
         email=request.POST['email']
         
-        cart=Cart.objects.get(user=request.user)
-        cartitems=CartItem.objects.all().filter(cart=cart)
+        dict_data={
+            "name":name,
+            "address":address,
+            "district":district,
+            "state":state,
+            "country":country,
+            "mobile":mobile,
+            "email":email
+        }
+        data_json=json.dumps(dict_data)
+        demo_url = reverse('orders:payment') + f'?data={data_json}'
+        
+        return redirect(demo_url)
+    return render(request,'orders/checkout.html')
 
-        try:
-            order=Order.objects.get(user=request.user)
-        except Order.DoesNotExist:
-            order=Order.objects.create(user=request.user)
 
 
-        for i in cartitems:
-            orderitem=OrderItem.objects.create(
-                order=order,
-                product=i.product.name,
-                quantity=i.quantity,
-                price=i.total,
-                name=name,
-                address=address,
-                district=district,
-                state=state,
-                country=country,
-                mobile=mobile,
-                email=email,
-                image=i.product.image,
-                tracking_id=random.randint(1000000,9999999)
-            )
-            orderitem.save()
+
+def create_order(request,string):
+    data=json.loads(string)
+    cart=Cart.objects.get(user=request.user)
+    cartitems=CartItem.objects.all().filter(cart=cart)
+
+    try:
+        order=Order.objects.get(user=request.user)
+    except Order.DoesNotExist:
+        order=Order.objects.create(user=request.user)
+
+
+    for i in cartitems:
+        orderitem=OrderItem.objects.create(
+        order=order,
+        product=i.product.name,
+        quantity=i.quantity,
+        price=i.total,
+        name=data['name'],
+        address=data['address'],
+        district=data['district'],
+        state=data['state'],
+        country=data['country'],
+        mobile=data['mobile'],
+        email=data['email'],
+        image=i.product.image,
+        tracking_id=random.randint(1000000,9999999)
+        )
+        orderitem.save()
         cart.delete()
         return redirect('orders:payment_success')
-    return render(request,'orders/checkout.html')
 
 
 def orders_view(request):
@@ -144,3 +165,17 @@ def render_to_pdf(template_src,context_dict:dict):
     if not pdf.err:
         return HttpResponse(result.getvalue(),content_type='application/pdf')
     return None
+
+
+def payment(request):
+    data_json = request.GET.get('data', '{}')
+    # print(type(data_json))
+    # data = json.loads(data_json)
+    # print(type(data))
+    # context={
+    #     'data':data
+    # }
+    context={
+        "string":data_json
+    }
+    return render(request,'orders/payment_success_failure.html',context)

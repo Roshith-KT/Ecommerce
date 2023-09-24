@@ -12,4 +12,9 @@ urlpatterns=[
     path('payment_success',views.payment_success,name='payment_success'),
     path('payment_failure',views.payment_failure,name='payment_failure'),
     path('generate_invoice/<int:id>',views.generate_invoice,name="generate_invoice"),
+    path('payment/',views.payment,name='payment'),
+    path('create_order/<str:string>/',views.create_order,name='create_order'),
+    
+    
+    
 ]
